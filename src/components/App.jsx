@@ -1,7 +1,7 @@
-import { HomePage } from "pages/HomePage";
-import { MoviesPage } from "pages/MoviesPage";
+import { HomePage } from "pages/HomePage/HomePage";
+import { MoviesPage } from "pages/MoviesPage/MoviesPage";
 import { Route, Routes } from "react-router-dom";
-import { Navigation } from "./Navigation";
+import { Navigation } from "./Navigation/Navigation";
 
 export const App = () => {
   return (
