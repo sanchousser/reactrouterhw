@@ -13,3 +13,7 @@ function fetchData(endpoint) {
 export function fetchTrending() {
     return fetchData(`/trending/movie/day?`)
 }
+
+export function searchMovie(query) {
+    return fetchData(`/search/movie?query=${query}`)
+}

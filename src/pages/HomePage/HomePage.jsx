@@ -14,14 +14,15 @@ const HomePage = () => {
     }, [])
 
     return <section className={css.homepage__section}>
-        <ul>
+        <h1 className={css.homepage__title}>Trending movies</h1>
+        <ul className={css.movies__list}>
             {
                 movies.map(({ title, poster_path, id }) => {
-                    return (<li key={id}>
+                    return (<li className={css.movies__item} key={id}>
 
                         <Link>
                             <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
-                            <p>{title}</p>
+                            <p >{title}</p>
                         </Link>
                     </li>)
                 })
