@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
-import css from './SearchForm.module.css'
+// import css from './SearchForm.module.css'
 import { useState } from 'react';
 
 const SearchForm = ({onSubmit}) => {

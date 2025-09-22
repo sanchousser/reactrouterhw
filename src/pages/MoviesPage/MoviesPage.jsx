@@ -8,7 +8,7 @@ const MoviesPage = () => {
 
 
     const [movies, setMovies] = useState([])
-    const [searchQuery, setSearchQuery] = useState('')
+    // const [searchQuery, setSearchQuery] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
     const [filter, setFilter] = useState('')
     const queryValue = searchParams.get('query');
