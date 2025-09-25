@@ -1,32 +1,33 @@
 import { useSearchParams } from 'react-router-dom'
-// import css from './SearchForm.module.css'
+import css from './SearchForm.module.css'
 import { useState } from 'react';
 
-const SearchForm = ({onSubmit}) => {
+const SearchForm = ({ onSubmit }) => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query');
     const [searchMovie, setSearchMovie] = useState(query ?? '');
 
-    console.log(query)
+    // console.log(query)
 
     const onInputChange = (e) => {
         setSearchMovie(e.target.value.toLowerCase())
     }
 
-    const onFormClick = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         if (searchMovie === '') {
             alert('Enter something')
         }
-        setSearchParams({ query: searchMovie })
+        setSearchParams({ query: searchMovie });
+        onSubmit(searchMovie);
     }
 
 
 
     return (
-        <form onSubmit={()=> onSubmit()}>
-            <input autoComplete='off'
+        <form className={css.search__form} onSubmit={handleSubmit}>
+            <input className={css.search__input} autoComplete='off'
                 autoFocus
                 name='query'
                 onChange={onInputChange}
@@ -35,7 +36,7 @@ const SearchForm = ({onSubmit}) => {
                 placeholder='Search for a movie'
             />
 
-            <button onClick={onFormClick} type="submit">Search</button>
+            <button className={css.search__button} type="submit">Search</button>
         </form>
     )
 }

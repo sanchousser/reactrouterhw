@@ -1,6 +1,37 @@
 .moviespage__section {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+}
+
+.movies__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.movies__item {
+    border: 3px white solid;
+    border-radius: 15px;
+    color: white;
+    overflow: hidden;
+
+    text-align: center;
+    background-color: black;
+    flex-basis: calc((100% - 3 * 20px) / 4);
+}
+
+.movies__item p {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.movies__item img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
