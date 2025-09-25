@@ -20,7 +20,7 @@ const HomePage = () => {
                 movies.map(({ title, poster_path, id }) => {
                     return (<li className={css.movies__item} key={id}>
 
-                        <Link>
+                        <Link to={`/movies/${id}`}>
                             <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
                             <p >{title}</p>
                         </Link>

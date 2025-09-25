@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getMovieCast, getMovieDetails, getMovieReviews } from "services/getApiData";
 import css from './MovieDetails.module.css'
 
@@ -8,21 +8,20 @@ const MovieDetails = () => {
     const { movieId } = useParams()
     const [movie, setMovie] = useState('')
     const [cast, setCast] = useState([])
-    const [reviews, setReviews] = useState()
+    const [reviews, setReviews] = useState([])
     const [showCast, setShowCast] = useState(false)
     const [showReviews, setShowReviews] = useState(false)
 
 
     useEffect(() => {
         getMovieDetails(movieId).then(setMovie)
-        console.log(movie)
     }, [movieId])
 
     const onCastClick = (e) => {
         e.preventDefault();
         getMovieCast(movieId)
             .then(data => {
-                setCast(data.cast.slice(0, 5));
+                setCast(data.cast.slice(0, 6));
             })
             .catch(err => console.error(err));
         console.log(cast)
@@ -40,12 +39,6 @@ const MovieDetails = () => {
         setShowReviews(prev => !prev)
     };
 
-    //     const onReviewClick = () => {
-    //     getMovieReviews(movieId).then(cast => setCast(cast))
-
-
-    //     console.log(cast)
-    // }
 
 
 
@@ -60,7 +53,7 @@ const MovieDetails = () => {
             )}
             <div className={css.info}>
                 <h1 className={css.title}>{movie.title}</h1>
-                <p className={css.score}>User score: {movie.vote_average}/10</p>
+                <p className={css.score}>User score: {Math.round(movie.vote_average * 10) / 10}/10</p>
 
                 <h2 className={css.subtitle}>Overview</h2>
                 <p className={css.overview}>{movie.overview}</p>
@@ -77,12 +70,12 @@ const MovieDetails = () => {
                 <div className={css.additional}>
                     <h3 className={css.subtitle}>Additional information</h3>
                     <div className={css.additionalLinks}>
-                        <a onClick={onCastClick} className={css.link}>
+                        <button onClick={onCastClick} className={css.link__btn}>
                             Cast
-                        </a>
-                        <a onClick={onReviewClick} className={css.link}>
+                        </button>
+                        <button onClick={onReviewClick} className={css.link__btn}>
                             Reviews
-                        </a>
+                        </button>
                     </div>
                     <ul className={css.castList}>
                         {showCast &&
@@ -106,7 +99,7 @@ const MovieDetails = () => {
                             reviews.map(review => (
                                 <li key={review.id} className={css.reviewItem}>
                                     <p className={css.reviewAuthor}>{review.author}</p>
-                                    <p className={css.reviewContent}>{review.content.slice(0, 150)}...</p>
+                                    <p className={css.reviewContent}>{review.content.slice(0, 450)}...</p>
                                 </li>
                             ))}
                     </ul>

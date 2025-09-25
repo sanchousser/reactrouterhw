@@ -75,17 +75,24 @@
     margin-top: 10px;
 }
 
-.link {
+.link__btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
     color: #007bff;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.2s;
     cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
 }
 
-.link:hover {
+.link__btn:hover {
     color: #0056b3;
 }
+
 
 
 .castList {
