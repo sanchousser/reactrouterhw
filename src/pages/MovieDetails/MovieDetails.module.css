@@ -93,66 +93,24 @@
     color: #0056b3;
 }
 
-
-
-.castList {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
+.backLink {
+  display: inline-block;
+  position: absolute;
+  margin-bottom: 15px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+  background: #f0f4ff;
+  border: 1px solid #cce0ff;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
 }
 
-.castItem {
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.backLink:hover {
+  background: #e6f0ff;
+  color: #0056b3;
+  border-color: #99c2ff;
 }
 
-.castImg {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 8px;
-}
-
-.castName {
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-
-.castRole {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.reviewList {
-    list-style: none;
-    padding: 0;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.reviewItem {
-    background: #fafafa;
-    border-left: 4px solid #0077ff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.reviewAuthor {
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: #333;
-}
-
-.reviewContent {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.4;
-}

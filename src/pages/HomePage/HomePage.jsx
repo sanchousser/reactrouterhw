@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import css from './HomePage.module.css'
 import { fetchTrending } from 'services/getApiData';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const HomePage = () => {
 
+    const location = useLocation();
     const [movies, setMovies] = useState([]);
     useEffect(() => {
         fetchTrending().then(movies => {
@@ -20,7 +21,7 @@ const HomePage = () => {
                 movies.map(({ title, poster_path, id }) => {
                     return (<li className={css.movies__item} key={id}>
 
-                        <Link to={`/movies/${id}`}>
+                        <Link to={`/movies/${id}`} state={{from: location}}>
                             <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
                             <p >{title}</p>
                         </Link>

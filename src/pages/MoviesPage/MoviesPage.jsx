@@ -2,13 +2,13 @@ import SearchForm from 'components/SearchForm/SearchForm'
 import css from './MoviePage.module.css'
 import { useEffect, useState } from 'react'
 import { searchMovie } from 'services/getApiData'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 
 
 
 const MoviesPage = () => {
 
-
+    const location = useLocation();
     const [movies, setMovies] = useState([])
     // const [searchQuery, setSearchQuery] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
@@ -36,7 +36,7 @@ const MoviesPage = () => {
                 movies.map(({ title, poster_path, id }) => {
                     return (<li className={css.movies__item} key={id}>
 
-                        <Link to={`/movies/${id}`}>
+                        <Link to={`/movies/${id}`} state={{from: location}}>
                             <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
                             <p >{title}</p>
                         </Link>

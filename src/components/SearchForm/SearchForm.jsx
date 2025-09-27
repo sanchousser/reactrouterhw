@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 import css from './SearchForm.module.css'
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const SearchForm = ({ onSubmit }) => {
 
@@ -40,5 +41,12 @@ const SearchForm = ({ onSubmit }) => {
         </form>
     )
 }
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func
+}
+
+
+
 
 export default SearchForm;

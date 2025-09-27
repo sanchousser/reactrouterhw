@@ -1,49 +1,56 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { getMovieCast, getMovieDetails, getMovieReviews } from "services/getApiData";
 import css from './MovieDetails.module.css'
 
 const MovieDetails = () => {
 
     const { movieId } = useParams()
+    const location = useLocation()
     const [movie, setMovie] = useState('')
-    const [cast, setCast] = useState([])
-    const [reviews, setReviews] = useState([])
-    const [showCast, setShowCast] = useState(false)
-    const [showReviews, setShowReviews] = useState(false)
+    // const [cast, setCast] = useState([])
+    // const [reviews, setReviews] = useState([])
+    // const [showCast, setShowCast] = useState(false)
+    // const [showReviews, setShowReviews] = useState(false)
+
+    const isCast = location.pathname.endsWith("cast");
+    const isReviews = location.pathname.endsWith("reviews");
 
 
     useEffect(() => {
         getMovieDetails(movieId).then(setMovie)
     }, [movieId])
 
-    const onCastClick = (e) => {
-        e.preventDefault();
-        getMovieCast(movieId)
-            .then(data => {
-                setCast(data.cast.slice(0, 6));
-            })
-            .catch(err => console.error(err));
-        console.log(cast)
-        setShowCast(prev => !prev)
-    };
+    // const onCastClick = (e) => {
+    //     e.preventDefault();
+    //     getMovieCast(movieId)
+    //         .then(data => {
+    //             setCast(data.cast.slice(0, 6));
+    //         })
+    //         .catch(err => console.error(err));
+    //     console.log(cast)
+    //     setShowCast(prev => !prev)
+    // };
 
-    const onReviewClick = (e) => {
-        e.preventDefault();
-        getMovieReviews(movieId)
-            .then(data => {
-                setReviews(data.results.slice(0, 2));
-            })
-            .catch(err => console.error(err));
-        console.log(reviews)
-        setShowReviews(prev => !prev)
-    };
+    // const onReviewClick = (e) => {
+    //     e.preventDefault();
+    //     getMovieReviews(movieId)
+    //         .then(data => {
+    //             setReviews(data.results.slice(0, 2));
+    //         })
+    //         .catch(err => console.error(err));
+    //     console.log(reviews)
+    //     setShowReviews(prev => !prev)
+    // };
 
 
 
 
     return (
         <section className={css.details}>
+            <Link to={location?.state?.from || '/'} className={css.backLink}>
+                ← Back
+            </Link>
             {movie.poster_path && (
                 <img
                     className={css.poster}
@@ -70,14 +77,14 @@ const MovieDetails = () => {
                 <div className={css.additional}>
                     <h3 className={css.subtitle}>Additional information</h3>
                     <div className={css.additionalLinks}>
-                        <button onClick={onCastClick} className={css.link__btn}>
+                        <Link to={isCast ? `/movies/${movieId}` : "cast"} className={css.link__btn}>
                             Cast
-                        </button>
-                        <button onClick={onReviewClick} className={css.link__btn}>
+                        </Link>
+                        <Link to={isReviews ? `/movies/${movieId}` : "reviews"} className={css.link__btn}>
                             Reviews
-                        </button>
+                        </Link>
                     </div>
-                    <ul className={css.castList}>
+                    {/* <ul className={css.castList}>
                         {showCast &&
                             cast.map(actor => (
                                 <li key={actor.id} className={css.castItem}>
@@ -102,9 +109,8 @@ const MovieDetails = () => {
                                     <p className={css.reviewContent}>{review.content.slice(0, 450)}...</p>
                                 </li>
                             ))}
-                    </ul>
-
-
+                    </ul> */}
+                    <Outlet />
                 </div>
             </div>
         </section >

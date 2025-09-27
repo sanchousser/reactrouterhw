@@ -1,0 +1,32 @@
+.castList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.castItem {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.castImg {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.castName {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.castRole {
+    font-size: 0.9rem;
+    color: #555;
+}
