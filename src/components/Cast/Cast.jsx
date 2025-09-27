@@ -15,7 +15,7 @@ const Cast = () => {
             })
             .catch(err => console.error(err));
         console.log(cast)
-    }, [movieId])
+    }, [movieId, cast])
 
     return (
         <ul className={css.castList} >
