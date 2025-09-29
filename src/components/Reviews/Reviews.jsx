@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { getMovieReviews } from "services/getApiData"
 import css from './Reviews.module.css'
 
-const Cast = () => {
+const Reviews = () => {
     const { movieId } = useParams()
 
     const [reviews, setReviews] = useState([])
@@ -14,8 +14,8 @@ const Cast = () => {
                 setReviews(data.results.slice(0, 2));
             })
             .catch(err => console.error(err));
-        console.log(reviews)
-    }, [movieId, reviews])
+
+    }, [movieId])
 
     return (
         <ul className={css.reviewList}>
@@ -30,4 +30,4 @@ const Cast = () => {
     )
 }
 
-export default Cast
+export default Reviews

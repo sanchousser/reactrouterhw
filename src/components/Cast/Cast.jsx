@@ -14,8 +14,8 @@ const Cast = () => {
                 setCast(data.cast.slice(0, 6));
             })
             .catch(err => console.error(err));
-        console.log(cast)
-    }, [movieId, cast])
+
+    }, [movieId])
 
     return (
         <ul className={css.castList} >
